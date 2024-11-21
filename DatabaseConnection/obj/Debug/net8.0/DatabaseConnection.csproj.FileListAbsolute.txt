@@ -1,0 +1,14 @@
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\bin\Debug\net8.0\DatabaseConnection.deps.json
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\bin\Debug\net8.0\DatabaseConnection.runtimeconfig.json
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\bin\Debug\net8.0\DatabaseConnection.dll
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\bin\Debug\net8.0\DatabaseConnection.pdb
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\obj\Debug\net8.0\DatabaseConnection.csproj.AssemblyReference.cache
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\obj\Debug\net8.0\DatabaseConnection.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\obj\Debug\net8.0\DatabaseConnection.AssemblyInfoInputs.cache
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\obj\Debug\net8.0\DatabaseConnection.AssemblyInfo.cs
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\obj\Debug\net8.0\DatabaseConnection.csproj.CoreCompileInputs.cache
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\obj\Debug\net8.0\DatabaseConnection.dll
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\obj\Debug\net8.0\refint\DatabaseConnection.dll
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\obj\Debug\net8.0\DatabaseConnection.pdb
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\obj\Debug\net8.0\DatabaseConnection.genruntimeconfig.cache
+C:\Users\Mohammad\source\repos\Task\DatabaseConnection\obj\Debug\net8.0\ref\DatabaseConnection.dll

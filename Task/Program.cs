@@ -1,8 +1,15 @@
+using System.Data.Common;
+
+using DatabaseConnection.DBContext;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddDbContext<WebApplicationDBContext>(options =>
+{
+    options.UseSqlServer("server=Computer\\sena;Database=TaskProduct;Integrated Security=True;TrustServerCertificate=True");
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
