@@ -1,0 +1,52 @@
+﻿@page
+@model Task.Pages.auth.RegisterModel
+@{
+    Layout = "_LayoutAuthentication";
+}
+
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" method="post">
+            <!-- Username Field -->
+            <div>
+                <label asp-for="Username"></label>
+                <input asp-for="Username" type="text" placeholder="Enter your username" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+
+            <!-- Fullname Field -->
+            <div>
+                <label asp-for="Fullname"></label>
+                <input asp-for="Fullname" type="text" placeholder="Enter your full name" />
+                <span asp-validation-for="Fullname" class="text-danger"></span>
+            </div>
+
+            <!-- Email Field -->
+            <div>
+                <label asp-for="Email"></label>
+                <input asp-for="Email" type="email" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <!-- Password Field -->
+            <div>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" placeholder="Enter your password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div>
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" type="password" placeholder="Confirm your password" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Register</button>
+
+            <!-- Link to Login Page -->
+            <p class="message">Already registered? <a href="/auth/login">Go to Login page</a></p>
+        </form>
+    </div>
+</div>

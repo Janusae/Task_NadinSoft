@@ -1,4 +1,5 @@
 ﻿using CoreLayout.DTOS.Users;
+using CoreLayout.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace CoreLayout.Service.Users
 {
     public interface IUserService
     {
-        void RegisterProcess(Register register);
+        OperationHandler RegisterProcess(RegisterDTOS register);
+        OperationHandler LoginProcess(LoginDTOS login);
     }
 }

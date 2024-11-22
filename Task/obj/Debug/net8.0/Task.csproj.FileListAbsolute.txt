@@ -168,3 +168,11 @@ C:\Users\Mohammad\source\repos\Task\Task\obj\Debug\net8.0\refint\Task.dll
 C:\Users\Mohammad\source\repos\Task\Task\obj\Debug\net8.0\Task.pdb
 C:\Users\Mohammad\source\repos\Task\Task\obj\Debug\net8.0\Task.genruntimeconfig.cache
 C:\Users\Mohammad\source\repos\Task\Task\obj\Debug\net8.0\ref\Task.dll
+C:\Users\Mohammad\source\repos\Task\Task\bin\Debug\net8.0\CoreLayout.dll
+C:\Users\Mohammad\source\repos\Task\Task\bin\Debug\net8.0\CoreLayout.pdb
+C:\Users\Mohammad\source\repos\Task\Task\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Mohammad\source\repos\Task\Task\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\Mohammad\source\repos\Task\Task\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\Mohammad\source\repos\Task\Task\bin\Debug\net8.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\Mohammad\source\repos\Task\Task\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Mohammad\source\repos\Task\Task\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

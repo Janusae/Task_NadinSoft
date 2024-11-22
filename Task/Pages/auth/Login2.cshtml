@@ -1,0 +1,24 @@
+﻿@page
+@model Task.Pages.auth.Login2Model
+@{
+    Layout = "_LayoutAuthentication";
+}
+
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" method="post">
+            <div>
+                <label asp-for="Username"></label>
+                <input asp-for="Username" type="text" placeholder="Enter your username" />
+                <span asp-validation-for="Username" class="text-danger"></span> *
+            </div>
+            <div>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="text" placeholder="Enter your full name" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <button type="submit">Register</button>
+            <p class="message">Already registered? <a href="/auth/login">Go to Login page</a></p>
+        </form>
+    </div>
+</div> 
