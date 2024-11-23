@@ -33,4 +33,8 @@
     <None Include="Pages\Shared\CssMyAccount.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\NewFolder\" />
+  </ItemGroup>
+
 </Project>

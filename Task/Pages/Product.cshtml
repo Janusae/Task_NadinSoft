@@ -1,9 +1,31 @@
 ﻿@page
 @model ProductModel
+<form method="post">
+	<input type="search" placeholder="ُSearch Username" name="Search" />
+	<input type="submit" value="Search" />
+</form>
+
 @{
+	if (ViewData["dataFiltered"] != null)
+	{
+		foreach (var product in (List<DatabaseConnection.EntityTable.ProductModel>)ViewData["dataFiltered"])
+		{
+			<p>@product.Name - @product.ProduceDate - @product.ManufacturePhone - @product.ManufactureEmail - @(product.IsAvailable ? "Available" : "Not Available")</p>
+		}
+	}
+	else
+	{
+		foreach (var product in (List<DatabaseConnection.EntityTable.ProductModel>)ViewData["data"])
+		{
+			<p>@product.Name - @product.ProduceDate - @product.ManufacturePhone - @product.ManufactureEmail - @(product.IsAvailable ? "Available" : "Not Available")</p>
+		}
+	}
+}
+@* @{
 	@foreach (var product in (List<DatabaseConnection.EntityTable.ProductModel>)ViewData["data"])
 	{
 		<p>@product.Name - @product.ProduceDate - @product.ManufacturePhone - @product.ManufactureEmail - @(product.IsAvailable ? "Available" : "Not Available")</p>
 	}
 
 }
+ *@

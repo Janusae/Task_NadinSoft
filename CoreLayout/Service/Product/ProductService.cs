@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace CoreLayout.Service.Product
 {
-	public class ProductService : IProductService
-	{
-		private readonly WebApplicationDBContext _dbcontext;
-		public ProductService(WebApplicationDBContext dbcontext) 
-		{
-			_dbcontext = dbcontext;
-		}
+    public class ProductService : IProductService
+    {
+        private readonly WebApplicationDBContext _dbcontext;
+        public ProductService(WebApplicationDBContext dbcontext)
+        {
+            _dbcontext = dbcontext;
+        }
 
         public OperationHandler EditData(InsertDataDTOS insertDOTS)
         {
@@ -74,7 +74,7 @@ namespace CoreLayout.Service.Product
                 {
                     return OperationHandler.NotFound("We could not find any Product with that name!");
                 }
-                
+
             }
             else
             {
@@ -84,45 +84,53 @@ namespace CoreLayout.Service.Product
 
         }
         public OperationHandler AddData(InsertDataDTOS insertDOTS)
-		{
-			var IsCorrectInfo = insertDOTS.Name != null && insertDOTS.ManufactureEmail != null && insertDOTS.ManufacturePhone != null;
+        {
+            var CheckEmail = _dbcontext.Product.Any(x => x.ManufactureEmail == insertDOTS.ManufactureEmail);
+            if (!CheckEmail)
+            {
+                var IsCorrectInfo = insertDOTS.Name != null && insertDOTS.ManufactureEmail != null && insertDOTS.ManufacturePhone != null;
 
-			if (IsCorrectInfo)
-			{
-                try
+                if (IsCorrectInfo)
                 {
-                    _dbcontext.Add(new ProductModel
+                    try
                     {
-                        IsAvailable = true,
-                        IsDelete = false,
-                        ManufactureEmail = insertDOTS.ManufactureEmail,
-                        ManufacturePhone = insertDOTS.ManufacturePhone,
-                        Name = insertDOTS.Name,
-                        ProduceDate = DateTime.Now ,
-						Auther = insertDOTS.Auther 
-                    });
-					_dbcontext.SaveChanges();
-                    return OperationHandler.Success("You added a new product successfully!");
+                        _dbcontext.Add(new ProductModel
+                        {
+                            IsAvailable = true,
+                            IsDelete = false,
+                            ManufactureEmail = insertDOTS.ManufactureEmail,
+                            ManufacturePhone = insertDOTS.ManufacturePhone,
+                            Name = insertDOTS.Name,
+                            ProduceDate = DateTime.Now,
+                            Auther = insertDOTS.Auther
+                        });
+                        _dbcontext.SaveChanges();
+                        return OperationHandler.Success("You added a new product successfully!");
+                    }
+                    catch (Exception ex)
+                    {
+                        return OperationHandler.Error(ex.Message);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    return OperationHandler.Error(ex.Message);
+                    return OperationHandler.Error("Your information is not correct!");
                 }
-            }
-			else
-			{
-				return OperationHandler.Error("Your information is not correct!");
-			}
-			
-			
-		}
-        public List<object> ShowData(string Name)
-		{
-			var search = _dbcontext.Product.Where(x => x.Auther == Name).ToArray();
-			var check = 0;
-			return [];
 
-		}
+            }
+            else
+            {
+                return OperationHandler.Error("The email is repeated!");
+            }
+
+        }
+        public List<object> ShowData(string Name)
+        {
+            var search = _dbcontext.Product.Where(x => x.Auther == Name).ToArray();
+            var check = 0;
+            return [];
+
+        }
 
     }
 }
