@@ -22,66 +22,59 @@ namespace CoreLayout.Service.Product
         public OperationHandler EditData(InsertDataDTOS insertDOTS)
         {
             var IsCorrectInfo = insertDOTS.Name != null && insertDOTS.ManufactureEmail != null && insertDOTS.ManufacturePhone != null;
-            
 
             if (IsCorrectInfo)
             {
-
-                var search = _dbcontext.Product.FirstOrDefault(x=>x.Auther == insertDOTS.Auther && x.Name == insertDOTS.Name);
-                search.
-                var check = 0;
-                try
+                var search = _dbcontext.Product.FirstOrDefault(x => x.Auther == insertDOTS.Auther && x.Name == insertDOTS.Name);
+                if (search != null)
                 {
-                    _dbcontext.Add(new ProductModel
+                    try
                     {
-                        IsAvailable = true,
-                        IsDelete = false,
-                        ManufactureEmail = insertDOTS.ManufactureEmail,
-                        ManufacturePhone = insertDOTS.ManufacturePhone,
-                        Name = insertDOTS.Name,
-                        ProduceDate = DateTime.Now,
-                        Auther = insertDOTS.Auther
-                    });
-                    _dbcontext.SaveChanges();
-                    return OperationHandler.Success("You added a new product successfully!");
+                        search.Name = insertDOTS.Name;
+                        search.ManufacturePhone = insertDOTS.ManufacturePhone;
+                        search.ManufactureEmail = insertDOTS.ManufactureEmail;
+                        _dbcontext.SaveChanges();
+                        return OperationHandler.Success("You updated the product successfully!");
+                    }
+                    catch (Exception ex)
+                    {
+                        return OperationHandler.Error(ex.Message);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    return OperationHandler.Error(ex.Message);
+                    return OperationHandler.NotFound("We could not find your product");
                 }
             }
             else
             {
                 return OperationHandler.Error("Your information is not correct!");
             }
-
-
         }
         public OperationHandler DeleteData(InsertDataDTOS insertDOTS)
         {
-            var IsCorrectInfo = insertDOTS.Name != null && insertDOTS.ManufactureEmail != null && insertDOTS.ManufacturePhone != null;
-
+            var IsCorrectInfo = insertDOTS.Name != null && insertDOTS.Auther != null;
             if (IsCorrectInfo)
             {
-                try
+                var search = _dbcontext.Product.FirstOrDefault(x => x.Auther == insertDOTS.Auther && x.Name == insertDOTS.Name);
+                if (search != null)
                 {
-                    _dbcontext.Add(new ProductModel
+                    try
                     {
-                        IsAvailable = true,
-                        IsDelete = false,
-                        ManufactureEmail = insertDOTS.ManufactureEmail,
-                        ManufacturePhone = insertDOTS.ManufacturePhone,
-                        Name = insertDOTS.Name,
-                        ProduceDate = DateTime.Now,
-                        Auther = insertDOTS.Auther
-                    });
-                    _dbcontext.SaveChanges();
-                    return OperationHandler.Success("You added a new product successfully!");
+                        _dbcontext.Product.Remove(search);
+                        _dbcontext.SaveChanges();
+                        return OperationHandler.Success("The product removed!");
+                    }
+                    catch (Exception ex)
+                    {
+                        return OperationHandler.Error(ex.Message);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    return OperationHandler.Error(ex.Message);
+                    return OperationHandler.NotFound("We could not find any Product with that name!");
                 }
+                
             }
             else
             {

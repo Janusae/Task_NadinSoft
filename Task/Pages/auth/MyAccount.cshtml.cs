@@ -72,11 +72,38 @@ namespace Task.Pages.auth
                         ManufactureEmail = ManufactureEmail,
                         ManufacturePhone = ManufacturePhone
                     });
-                    return RedirectToPage();
+                    if (result.Status == 200) 
+                    {
+                        TempData["Result"] = result.Message;
+                    }
+                    else
+                    {
+                        TempData["Error"] = result.Message;
+                    }
+                    return RedirectToPage("MyAccount");
+                }
+                if (action == "Delete")
+                {
+                    var result = _productService.DeleteData(new InsertDataDTOS
+                    {
+                        Auther = Username,
+                        Name = Name
+                    });
+                    if (result.Status == 200) 
+                    {
+                        TempData["Result"] = result.Message;
+                        return RedirectToPage("MyAccount");
+                    }
+                    else
+                    {
+                        TempData["Error"] = result.Message;
+                        return RedirectToPage("MyAccount");
+                    }
+
                 }
                 else
                 {
-                    return RedirectToPage();
+                    return RedirectToPage("MyAccount");
                 }
   
                 
