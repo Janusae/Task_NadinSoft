@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DatabaseConnection.EntityTable
 {
-    public class BaseClass
-    {
-        public int Id { get; set; }
-        public bool IsDelete { get; set; }
-    }
+	public class BaseClass
+	{
+		public int Id { get; set; }
+		public bool IsDelete { get; set; }
+	}
 }
