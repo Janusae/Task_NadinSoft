@@ -27,6 +27,11 @@
                 <input asp-for="ManufactureEmail" type="text" placeholder="Enter your full name" />
                 <span asp-validation-for="ManufactureEmail" class="text-danger"></span>
             </div>
+            <div>
+                <label asp-for="IsAvailable"></label>
+                <input asp-for="IsAvailable" type="text" placeholder="Enter your full name" />
+                <span asp-validation-for="IsAvailable" class="text-danger"></span>
+            </div>
             <button style="background-color : blue" type="submit" name="action" value="Add">Add Product</button>
             <button style="background-color : orange" type="submit" name="action" value="Edit">Edit Product</button>
             <button style="background-color : red" type="submit" name="action" value="Delete"> Delete Product</button>
@@ -34,6 +39,7 @@
     </div>
 </div> 
 <ul>
+    <li>IsAvailable field is just for Edit</li>
     <li>You can just change Phone and Email</li>
     <li>If you want to delete a product , just enter it's name</li>
 </ul>

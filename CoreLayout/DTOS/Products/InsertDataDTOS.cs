@@ -11,6 +11,7 @@ namespace CoreLayout.DTOS.Products
 		public string Name { get; set; }
 		public string ManufacturePhone { get; set; }
 		public string ManufactureEmail { get; set; }
+		public bool IsAvailable { get; set; }
 		public string Auther { get; set; }
 	}
 }

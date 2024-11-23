@@ -37,6 +37,7 @@ namespace CoreLayout.Service.Product
 							search.Name = insertDOTS.Name;
 							search.ManufacturePhone = insertDOTS.ManufacturePhone;
 							search.ManufactureEmail = insertDOTS.ManufactureEmail;
+							search.IsAvailable = insertDOTS.IsAvailable;
 							_dbcontext.SaveChanges();
 							return OperationHandler.Success("You updated the product successfully!");
 						}

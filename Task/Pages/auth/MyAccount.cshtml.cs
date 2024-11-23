@@ -10,6 +10,7 @@ namespace Task.Pages.auth
         public class MyAccountModel : PageModel
         {
             public string? Username{ get; set; }
+            public bool IsAvailable { get; set; }
             public string Name { get; set; }
             public string ManufacturePhone { get; set; }
             public string ManufactureEmail { get; set; }
@@ -40,7 +41,7 @@ namespace Task.Pages.auth
                 //ViewData["data"] = _dbcontext.User
                 var one = 1;
             }
-            public IActionResult OnPost(string action  , string Name , string ManufactureEmail , string ManufacturePhone)
+            public IActionResult OnPost(string action  , string Name , string ManufactureEmail , string ManufacturePhone , string IsAvailable)
             {
                 Username = User.Identity?.Name;
                 if (action == "Add")
@@ -65,21 +66,34 @@ namespace Task.Pages.auth
                 }
                 if(action == "Edit")
                 {
-                    var result = _productService.EditData(new InsertDataDTOS
-                    {
-                        Auther = Username,
-                        Name = Name, 
-                        ManufactureEmail = ManufactureEmail,
-                        ManufacturePhone = ManufacturePhone
-                    });
-                    if (result.Status == 200) 
-                    {
-                        TempData["Result"] = result.Message;
+                    if(IsAvailable == "True" || IsAvailable == "true") {
+                        var result = _productService.EditData(new InsertDataDTOS
+                        {
+                            Auther = Username,
+                            Name = Name,
+                            ManufactureEmail = ManufactureEmail,
+                            ManufacturePhone = ManufacturePhone,
+                            IsAvailable  = true
+                        });
+                    } else {
+                        var result = _productService.EditData(new InsertDataDTOS
+                        {
+                            Auther = Username,
+                            Name = Name,
+                            ManufactureEmail = ManufactureEmail,
+                            ManufacturePhone = ManufacturePhone , 
+                            IsAvailable = false
+                        });
+                        if (result.Status == 200)
+                        {
+                            TempData["Result"] = result.Message;
+                        }
+                        else
+                        {
+                            TempData["Error"] = result.Message;
+                        }
                     }
-                    else
-                    {
-                        TempData["Error"] = result.Message;
-                    }
+
                     return RedirectToPage("MyAccount");
                 }
                 if (action == "Delete")
