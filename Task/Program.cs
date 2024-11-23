@@ -1,4 +1,5 @@
 using System.Data.Common;
+using CoreLayout.Service.Product;
 using CoreLayout.Service.Users;
 using DatabaseConnection.DBContext;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<WebApplicationDBContext>(options =>
     options.UseSqlServer("server=Computer\\sena;Database=TaskProduct;Integrated Security=True;TrustServerCertificate=True");
 });
 builder.Services.AddScoped<IUserService , UserService>();
+builder.Services.AddScoped<IProductService , ProductService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {

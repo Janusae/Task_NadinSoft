@@ -36,8 +36,12 @@ namespace Task.Pages.auth
                     TempData["InterMyAccountCertificate"] = true;
                     return RedirectToPage("MyAccount");
                 }
-
-                return RedirectToPage("index");
+                else
+                {
+                    TempData["Error"] = "Your information is not correct!";
+                    return RedirectToPage("Login2");
+                }
+                
             }
             public async Task<Status> LoginProcess(string username)
             {

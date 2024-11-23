@@ -1,0 +1,9 @@
+﻿@page
+@model ProductModel
+@{
+	@foreach (var product in (List<DatabaseConnection.EntityTable.ProductModel>)ViewData["data"])
+	{
+		<p>@product.Name - @product.ProduceDate - @product.ManufacturePhone - @product.ManufactureEmail - @(product.IsAvailable ? "Available" : "Not Available")</p>
+	}
+
+}

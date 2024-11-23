@@ -1,5 +1,35 @@
 ﻿@page
 @model Task.Pages.auth.MyAccountModel
 @{
+	Layout = "_LayoutAuthentication";
 }
-<h1>You are registered!</h1>
+<div>
+    <p style="color:blue ; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">@TempData["Result"]</p>
+</div>
+<div>
+    <p style="color:red ; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">@TempData["Error"]</p>
+</div>
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" method="post">
+            <div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" placeholder="Enter your username" />
+                <span asp-validation-for="Name" class="text-danger"></span> 
+            </div>
+            <div>
+                <label asp-for="ManufacturePhone"></label>
+                <input asp-for="ManufacturePhone" type="text" placeholder="Enter your full name" />
+                <span asp-validation-for="ManufacturePhone" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="ManufactureEmail"></label>
+                <input asp-for="ManufactureEmail" type="text" placeholder="Enter your full name" />
+                <span asp-validation-for="ManufactureEmail" class="text-danger"></span>
+            </div>
+            <button style="background-color : blue" type="submit" name="action" value="Add">Add Product</button>
+            <button style="background-color : orange" type="submit" name="action" value="Edit">Edit Product</button>
+            <button style="background-color : red" type="submit" name="action" value="Delete"> Delete Product</button>
+        </form>
+    </div>
+</div> 

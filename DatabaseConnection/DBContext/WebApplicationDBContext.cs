@@ -14,6 +14,9 @@ namespace DatabaseConnection.DBContext
         {
             
         }
-        public DbSet<Users> Users { get; set; }
+
+		public DbSet<User> Users { get; set; }
+		public DbSet<ProductModel> Product { get; set; }
+		public DbSet<Comment> Comments { get; set; }
     }
 }

@@ -3,7 +3,9 @@
 @{
     Layout = "_LayoutAuthentication";
 }
-
+<div>
+    <p style="color:red">@TempData["Error"]</p>
+</div>
 <div class="login-page">
     <div class="form">
         <form class="login-form" method="post">
@@ -17,8 +19,8 @@
                 <input asp-for="Password" type="text" placeholder="Enter your full name" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <button type="submit">Register</button>
-            <p class="message">Already registered? <a href="/auth/login">Go to Login page</a></p>
+            <button type="submit">Login</button>
+            <p class="message">Not registered? <a href="/auth/Register">Go to Register page</a></p>
         </form>
     </div>
 </div> 

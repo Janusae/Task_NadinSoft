@@ -6,21 +6,14 @@ using System.Threading.Tasks;
 
 namespace DatabaseConnection.EntityTable
 {
-    public class Users : BaseClass
+    public class User
     {
+        public int Id { get; set; }
         public string UserName { get; set; }
         public string Fullname { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public UserRole UserRole { get; set; }
-    }
-    public enum UserRole
-    {
-        admin,
-        User
-    }
 
+
+    }
 }
-
-
-

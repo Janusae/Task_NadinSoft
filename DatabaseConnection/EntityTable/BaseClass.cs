@@ -9,6 +9,6 @@ namespace DatabaseConnection.EntityTable
     public class BaseClass
     {
         public int Id { get; set; }
-        public int IsDelete { get; set; }
+        public bool IsDelete { get; set; }
     }
 }

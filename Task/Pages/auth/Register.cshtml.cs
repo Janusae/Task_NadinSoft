@@ -44,14 +44,21 @@ namespace Task.Pages.auth
                     Password = Password,
                     ConfirmPassword = ConfirmPassword
                 });
+
                 if (data.Status == 200)
                 {
-                    
+                    return RedirectToPage("Login2");
                 }
-
-                var dont = true;
-                // Handle registration logic
-                return RedirectToPage("auth/Login");
+                else
+                {
+                    if (data != null)
+                    {
+                        TempData["Error"] = $"{data.Message}";
+                    }
+                    
+                    return RedirectToPage("Register");
+                }
+                
             }
 
 

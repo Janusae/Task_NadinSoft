@@ -3,7 +3,9 @@
 @{
     Layout = "_LayoutAuthentication";
 }
-
+<div>
+    <p style="color:red">@TempData["Error"]</p>
+</div>
 <div class="login-page">
     <div class="form">
         <form class="login-form" method="post">
@@ -46,7 +48,7 @@
             <button type="submit">Register</button>
 
             <!-- Link to Login Page -->
-            <p class="message">Already registered? <a href="/auth/login">Go to Login page</a></p>
+            <p class="message">Already registered? <a href="/auth/Login2">Go to Login page</a></p>
         </form>
     </div>
 </div>

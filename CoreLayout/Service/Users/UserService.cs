@@ -22,75 +22,85 @@ namespace CoreLayout.Service.Users
         }
         public OperationHandler RegisterProcess(RegisterDTOS register)
         {
-            var IsUsernameExist = _dbContext.Users.Any(x => x.UserName == register.Username);
-            var IsEmailExist = _dbContext.Users.Any(x => x.Email == register.Email);
-            if (IsUsernameExist || IsEmailExist)
+            try
             {
-                return OperationHandler.Error("Your Username or Email is already exist!");
+                var IsUsernameExist = _dbContext.Users.Any(x => x.UserName == register.Username);
+                var IsEmailExist = _dbContext.Users.Any(x => x.Email == register.Email);
+                if (IsUsernameExist || IsEmailExist)
+                {
+                    return OperationHandler.Error("Your Username or Email is already exist!");
+                }
+                else
+                {
+                    if (register.Fullname == null)
+                    {
+                        return OperationHandler.Error("You must enter your full name!");
+                    }
+                    else
+                    {
+                        if (register.Password == register.ConfirmPassword)
+                        {
+                            _dbContext.Users.Add(new DatabaseConnection.EntityTable.User
+                            {
+                                Email = register.Email,
+                                UserName = register.Username,
+                                Fullname = register.Username,
+                                Password = register.Password,
+
+                            });
+                            _dbContext.SaveChanges();
+
+                            return OperationHandler.Success("You registered successfully!");
+                        }
+                        else
+                        {
+                            return OperationHandler.Error("Your Passwords are not the same!");
+
+                        }
+                    }
+
+
+
+                }
+            }
+            catch (Exception ex) 
+            {
+                return OperationHandler.NotFound("Your username or password are not correct!");
+            }
+            
+        }
+        public OperationHandler LoginProcess(LoginDTOS loginInput)
+        {
+            
+            var UserValidation = _dbContext.Users.FirstOrDefault(x => x.Id > 0);
+            var PasswdValidation = UserValidation.Password == loginInput.Password;
+            if (UserValidation != null || PasswdValidation == true)
+            {
+
+                return new OperationHandler
+                {
+                    Message = "You are loggined successfully!",
+                    Status = (int)StatusEnum.Success
+
+                };
             }
             else
             {
-                if (register.Password == register.ConfirmPassword)
+                return new OperationHandler
                 {
-                    _dbContext.Users.Add(new DatabaseConnection.EntityTable.Users
-                    {
-                        Email = register.Email,
-                        UserName = register.Username,
-                        Fullname = register.Username,
-                        IsDelete = 0,
-                        UserRole = UserRole.User,
-                        Password = register.Password,
+                    Message = "You are not loggined successfully!",
+                    Status = (int)StatusEnum.Error
 
-                    });
-                    _dbContext.SaveChanges();
-
-                    return OperationHandler.Success("You registered successfully!");
-                }
-                else
-                {
-                    return OperationHandler.Error("Your Password are not the same!");
-
-                }
-
-
+                };
             }
         }
-        public OperationHandler LoginProcess(LoginDTOS login)
-        {
-            try
-            {
-                var UserValidation = _dbContext.Users.FirstOrDefault(x => x.UserName == login.Username);
-                var one = 1;
-                var PasswdValidation = UserValidation.Password == login.Password;
-                if (UserValidation != null || PasswdValidation == true)
-                {
-
-                    return new OperationHandler
-                    {
-                        Message = "You are loggined successfully!",
-                        Status = (int)StatusEnum.Success
-
-                    };
-                }
-                else
-                {
-                    return new OperationHandler
-                    {
-                        Message = "You are not loggined successfully!",
-                        Status = (int)StatusEnum.Error
-
-                    };
-                }
-            }
-            catch (Exception ex)
-            {
-                return OperationHandler.NotFound("We could not find your Username");
-            }
 
 
 
 
-        }
 
     }
+
 }
+
+
